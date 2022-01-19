@@ -3,6 +3,8 @@ import { BrowserRouter } from "react-router-dom";
 
 import AllRoutes from "./routes";
 
+import GlobalStyles from "./styles/";
+
 import "./App.css";
 
 function App() {
@@ -10,6 +12,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <AllRoutes />
+        <GlobalStyles/>
       </div>
     </BrowserRouter>
   );
