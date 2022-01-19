@@ -5,8 +5,6 @@ import AllRoutes from "./routes";
 
 import GlobalStyles from "./styles/";
 
-import "./App.css";
-
 function App() {
   return (
     <BrowserRouter>
