@@ -24,7 +24,7 @@ const GlobalStyles = () => {
         body {
           -webkit-font-smoothing: antialiased !important;
           font-family: "Roboto", sans-serif;
-          color: #555;
+          color: #000;
           background: url(${pokeball}) no-repeat;
           background-size: 300px;
           background-position: calc(100% + 105px) -112px;

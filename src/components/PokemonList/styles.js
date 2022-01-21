@@ -22,6 +22,12 @@ export const Card = styled.div`
     0 3.8px 3.8px rgba(0, 0, 0, 0.034), 0 6.9px 6.9px rgba(0, 0, 0, 0.041),
     0 11.4px 11.4px rgba(0, 0, 0, 0.049), 0 18.8px 18.8px rgba(0, 0, 0, 0.056),
     0 32.8px 32.8px rgba(0, 0, 0, 0.067), 0 71px 71px rgba(0, 0, 0, 0.09);
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s;
+  }
 `;
 export const CardNumber = styled.div`
   font-size: 24px;
