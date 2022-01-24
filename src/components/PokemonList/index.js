@@ -3,16 +3,19 @@ import { useSelector } from "react-redux";
 
 import { Pokemons } from "./styles";
 
-import CardPokemon from "./Card";
+import CardPokemon from "../Global/Card";
 
-const PokemonList = () => {
+const PokemonList = ({ type }) => {
   const pokemon = useSelector((state) => state.pokemon);
   const pokemons = pokemon.data.pokemons.results;
 
   return (
     <Pokemons>
-      {Array.isArray(pokemons) &&
-        pokemons.map((data, i) => <CardPokemon key={i} data={data} />)}
+      {type === "pokemons"
+        ? Array.isArray(pokemons) &&
+          pokemons.map((data, i) => <CardPokemon key={i} data={data} />)
+        : Array.isArray(pokemons) &&
+          pokemons.map((data, i) => <CardPokemon type={'my-pokemon'} key={i} data={data} />)}
     </Pokemons>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { header } from "./styles";
 
@@ -13,12 +13,15 @@ const Dashboard = () => {
 
         <div>
           <ul className={menu}>
-            <Link to="/">
+            <NavLink to="/">
               <li>Home</li>
-            </Link>
-            <Link to="/pokemon">
+            </NavLink>
+            <NavLink to="/pokemon">
               <li>Pokemon</li>
-            </Link>
+            </NavLink>
+            <NavLink to="/my-pokemon">
+              <li>My Pokemon</li>
+            </NavLink>
           </ul>
         </div>
       </nav>

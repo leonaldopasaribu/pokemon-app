@@ -36,6 +36,7 @@ const GlobalStyles = () => {
         }
         a {
           text-decoration: none;
+          color: #000;
         }
         ul {
           list-style: none;

@@ -11,6 +11,7 @@ export const Button = styled.button`
   width: 100%;
   height: 60px;
   border: none;
+  border-radius: 10px;
   border: ${(props) => (props.disabled ? "2px solid #14fc33" : "#14fc33")};
   background: ${(props) => (props.disabled ? "#fff" : "#14fc33")};
   color: ${(props) => (props.disabled ? "#14fc33" : "#fff")};

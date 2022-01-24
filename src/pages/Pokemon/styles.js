@@ -6,6 +6,25 @@ export const Container = styled.div({
   padding: "30px 5% 120px 5%",
 });
 
+export const Details = styled.div({
+  width: "450px",
+  paddingBottom: "20px",
+});
+
+export const Title = styled.h1({
+  fontSize: "36px",
+  textTransform: "uppercase",
+  fontWeight: "800",
+  color:'#14fc33'
+});
+
+export const Description = styled.p({
+  fontFamily: "Mulish",
+  fontSize: "18px",
+  fontWeight: "300",
+  paddingTop:'10px'
+});
+
 export const MyPokemonButton = styled.div`
   margin: 0 auto;
   display: flex;
@@ -48,5 +67,5 @@ export const Pagination = styled.div({
   marginTop: "30px",
   display: "flex",
   justifyContent: "center",
-  gap:'20px',
+  gap: "20px",
 });
