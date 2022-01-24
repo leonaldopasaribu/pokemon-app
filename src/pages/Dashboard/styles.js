@@ -10,6 +10,7 @@ export const Container = styled.div({
   padding: "0 5%",
   display: "flex",
   alignItems: "center",
+  justifyContent: "space-between",
 });
 
 export const Title = styled.p({

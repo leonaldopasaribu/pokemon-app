@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import font from "../../assets/fonts/BarcadeBrawl.ttf";
 
 export const Container = styled.div({
-  padding: "30px 5%",
+  padding: "30px 5% 120px 5%",
 });
 
 export const MyPokemonButton = styled.div`
@@ -44,12 +44,9 @@ export const MyPokemonImg = styled.img({
   marginLeft: "10px",
 });
 
-export const Pokemons = styled.section`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin-top: 20px;
-
-  @media only screen and (max-width: 600px) {
-    grid-template-columns: 1fr;
-  }
-`;
+export const Pagination = styled.div({
+  marginTop: "30px",
+  display: "flex",
+  justifyContent: "center",
+  gap:'20px',
+});

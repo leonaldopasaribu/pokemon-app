@@ -1,22 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-import { Card, CardNumber, CardImage, CardName } from "./styles";
+import { Pokemons } from "./styles";
 
-import bulbasaur from "../../assets/images/bulbasaur.png";
+import CardPokemon from "./Card";
 
 const PokemonList = () => {
+  const pokemon = useSelector((state) => state.pokemon);
+  const pokemons = pokemon.data.pokemons.results;
+
   return (
-    <Card>
-      <CardNumber>
-        <p>#001</p>
-      </CardNumber>
-      <div>
-        <CardImage src={bulbasaur} alt="" />
-      </div>
-      <CardName>
-        <p>Bulbasaur</p>
-      </CardName>
-    </Card>
+    <Pokemons>
+      {Array.isArray(pokemons) &&
+        pokemons.map((data, i) => <CardPokemon key={i} data={data} />)}
+    </Pokemons>
   );
 };
 

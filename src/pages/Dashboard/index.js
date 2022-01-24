@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import Header from "../../components/Header";
 
@@ -29,9 +29,9 @@ export default function Dashboard() {
             <Description>
               You can know the type of Pokemon, its abilities and strength
             </Description>
-            <Link to="/pokemon">
+            <NavLink to="/pokemon">
               <Button>See Pokemons</Button>
-            </Link>
+            </NavLink>
           </div>
           <div>
             <img src={pikachu} alt="pikachuImages" />
