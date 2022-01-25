@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { usePalette } from "react-palette";
 import { NavLink } from "react-router-dom";
+
+import { AppContext } from "../../../context/AppContext";
 
 import { Card, CardNumber, CardImage, CardName, CardButton } from "./styles";
 
 const CardPokemon = ({ data, type }) => {
+  const { idFormatter } = useContext(AppContext);
   const { data: color } = usePalette(data.image);
 
   return (
@@ -12,7 +15,7 @@ const CardPokemon = ({ data, type }) => {
       {type === "my-pokemon" ? (
         <Card background={color.lightVibrant} type={type}>
           <CardNumber>
-            <p>#{String(data.id).padStart(3, "0")}</p>
+            <p>#{idFormatter(data.id)}</p>
           </CardNumber>
           <div>
             <CardImage src={data.image} alt="pokemonImage" />
@@ -27,7 +30,7 @@ const CardPokemon = ({ data, type }) => {
         <NavLink to={`/pokemon-detail/${data.name}`}>
           <Card background={color.lightVibrant}>
             <CardNumber>
-              <p>#{String(data.id).padStart(3, "0")}</p>
+              <p>#{idFormatter(data.id)}</p>
             </CardNumber>
             <div>
               <CardImage src={data.image} alt="pokemonImage" />

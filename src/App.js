@@ -4,9 +4,12 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+
 import configureStore from "./redux/store";
 
 import AllRoutes from "./routes";
+
+import { AppProvider } from "./context/AppContext";
 
 import GlobalStyles from "./styles/";
 
@@ -20,14 +23,16 @@ function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ApolloProvider client={client}>
-          <BrowserRouter>
-            <div className="App">
-              <AllRoutes />
-              <GlobalStyles />
-            </div>
-          </BrowserRouter>
-        </ApolloProvider>
+        <AppProvider>
+          <ApolloProvider client={client}>
+            <BrowserRouter>
+              <div className="App">
+                <AllRoutes />
+                <GlobalStyles />
+              </div>
+            </BrowserRouter>
+          </ApolloProvider>
+        </AppProvider>
       </PersistGate>
     </Provider>
   );
