@@ -14,7 +14,7 @@ export const Card = styled.div`
   text-align: center;
   background: ${(props) =>
     props.background
-      ? `linear-gradient(to bottom right ,${props.background},  #ff9)`
+      ? `radial-gradient(circle, #eee, ${props.background})`
       : "#ff5"};
   box-shadow: 0 1.6px 1.6px rgba(0, 0, 0, 0.023),
     0 3.8px 3.8px rgba(0, 0, 0, 0.034), 0 6.9px 6.9px rgba(0, 0, 0, 0.041),

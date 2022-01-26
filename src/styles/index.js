@@ -27,7 +27,7 @@ const GlobalStyles = () => {
           color: #000;
           background: url(${pokeball}) no-repeat;
           background-size: 300px;
-          background-position: calc(100% + 105px) -112px;
+          background-position: calc(100% + 105px) 100px;
         }
         body,
         input,

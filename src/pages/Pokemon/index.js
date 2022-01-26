@@ -4,16 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../../components/Header";
 import PokemonList from "../../components/PokemonList";
+import Buttons from "../../components/Global/Buttons/";
 
 import { GET_POKEMONS } from "../../apollo/queries/pokemons";
 
 import { getPokemons } from "../../redux/store/actions/pokemonAction";
 
-import pokemonBall from "../../assets/images/pokeball.png";
-
 import { Container, Details, Title, Description, Pagination } from "./styles";
-
-import Buttons from "../../components/Global/Buttons/";
 
 export default function Dashboard() {
   const dispatch = useDispatch();
