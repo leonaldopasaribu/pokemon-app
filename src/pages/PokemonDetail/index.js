@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 import Header from "../../components/Header";
 
@@ -89,7 +90,12 @@ export default function PokemonDetail() {
   };
 
   const catchHandler = () => {
-    dispatch(addMyPokemon(pokemonData));
+    if (Math.random() < 0.5) {
+      toast.warning("Try Again! You Almost Got It");
+    } else {
+      toast.success("Success! You got it");
+      dispatch(addMyPokemon(pokemonData));
+    }
   };
 
   return (

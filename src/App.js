@@ -4,6 +4,8 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import configureStore from "./redux/store";
 
@@ -29,6 +31,12 @@ function App() {
               <div className="App">
                 <AllRoutes />
                 <GlobalStyles />
+                <ToastContainer
+                  position="top-center"
+                  autoClose={3000}
+                  closeButton={false}
+                  theme="colored"
+                />
               </div>
             </BrowserRouter>
           </ApolloProvider>
