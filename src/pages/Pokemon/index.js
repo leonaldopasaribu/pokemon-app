@@ -22,7 +22,9 @@ export default function Dashboard() {
     variables: { limit: limit, offset: offset },
   });
 
-  const count = pokemon.data.pokemons.count;
+  const count = pokemon.data.hasOwnProperty("pokemons")
+    ? pokemon.data.pokemons.count
+    : "";
 
   useEffect(() => {
     if (loading) return "Loading...";
@@ -37,10 +39,6 @@ export default function Dashboard() {
     <>
       <Header />
       <Container>
-        {/* <MyPokemonButton>
-            <MyPokemonTitle>My Pokemon</MyPokemonTitle>
-            <MyPokemonImg src={pokemonBall} alt="pokemonBall" />
-          </MyPokemonButton> */}
         <Details>
           <Title>List Pokemon</Title>
           <Description>

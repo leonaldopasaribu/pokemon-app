@@ -153,3 +153,73 @@ export const ListMoves = styled.div({
   fontSize: "18px",
   lineHeight: "28px;",
 });
+
+export const ButtonCatch = styled.button`
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 50px;
+  width: 300px;
+  padding: 10px 30px;
+  box-shadow: 2px 1px 30px #00000029;
+  color: #000;
+  background: linear-gradient(yellow, #ffd61f);
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    filter: grayscale(15%);
+    transform: scale(1.1);
+    transform: translate(-50%, -40%);
+  }
+`;
+
+export const ButtonCatchTitle = styled.p`
+  font-size: 12px;
+  font-weight: 500;
+  font-family: barcadebrawl;
+  @font-face {
+    font-family: barcadebrawl;
+    src: url(${font}) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+`;
+
+export const ButtonCatchImg = styled.img({
+  width: "40px",
+  height: "40px",
+  marginLeft: "10px",
+});
+
+export const ButtonCatchDisabled = styled.button`
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 50px;
+  width: 300px;
+  padding: 10px 30px;
+  box-shadow: 2px 1px 30px #00000029;
+  color: #000;
+  background: linear-gradient(yellow, #ffd61f);
+  filter: grayscale(100%);
+  border: none;
+
+  &:hover {
+    cursor: not-allowed;
+    filter: grayscale(100%);
+    transition: 0.3s;
+    transform: translate(-50%, -50%);
+  }
+`;

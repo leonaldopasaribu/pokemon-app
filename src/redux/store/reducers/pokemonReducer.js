@@ -5,11 +5,15 @@ import {
   GET_POKEMONS_REQUEST,
   GET_POKEMONS_SUCCESS,
   GET_POKEMONS_ERROR,
+  ADD_MY_POKEMON_REQUEST,
+  ADD_MY_POKEMON_SUCCESS,
+  ADD_MY_POKEMON_ERROR,
 } from "../../actionTypes";
 
 const initialState = {
   data: {},
   pokemonData: {},
+  myPokemon: {},
   isLoading: false,
   errorMessage: "",
   message: "",
@@ -57,6 +61,29 @@ const pokemonReducer = (state = initialState, action) => {
         pokemonData: action.payload,
       };
     case GET_POKEMON_ERROR:
+      return {
+        ...state,
+        isLoading: true,
+        errorMessage: null,
+        isError: false,
+      };
+
+    case ADD_MY_POKEMON_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        errorMessage: null,
+        isError: false,
+      };
+    case ADD_MY_POKEMON_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: null,
+        isError: false,
+        myPokemon: [...state.myPokemon, action.payload],
+      };
+    case ADD_MY_POKEMON_ERROR:
       return {
         ...state,
         isLoading: true,

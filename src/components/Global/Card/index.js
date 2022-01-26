@@ -9,16 +9,22 @@ import { Card, CardNumber, CardImage, CardName, CardButton } from "./styles";
 const CardPokemon = ({ data, type }) => {
   const { idFormatter } = useContext(AppContext);
   const { data: color } = usePalette(data.image);
+  const { data: color2 } = usePalette(
+    data.sprites === undefined ? "" : data.sprites.front_default
+  );
 
   return (
     <>
       {type === "my-pokemon" ? (
-        <Card background={color.lightVibrant} type={type}>
+        <Card background={color2.lightVibrant} type={type}>
           <CardNumber>
             <p>#{idFormatter(data.id)}</p>
           </CardNumber>
           <div>
-            <CardImage src={data.image} alt="pokemonImage" />
+            <CardImage
+              src={data.sprites === undefined ? "" : data.sprites.front_default}
+              alt="pokemonImage"
+            />
           </div>
           <CardName>
             <p>{data.name}</p>

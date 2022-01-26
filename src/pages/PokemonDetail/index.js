@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +7,12 @@ import Header from "../../components/Header";
 
 import { GET_POKEMON } from "../../apollo/queries/pokemons";
 
-import { getPokemon } from "../../redux/store/actions/pokemonAction";
+import {
+  getPokemon,
+  addMyPokemon,
+} from "../../redux/store/actions/pokemonAction";
+
+import pokemonBall from "../../assets/images/pokeball.png";
 
 import {
   Container,
@@ -28,20 +33,33 @@ import {
   ListAbilities,
   Moves,
   ListMoves,
+  ButtonCatch,
+  ButtonCatchTitle,
+  ButtonCatchImg,
+  ButtonCatchDisabled,
 } from "./styles";
 
 export default function PokemonDetail() {
   const dispatch = useDispatch();
   const pokemon = useSelector((state) => state.pokemon);
-  const { pokemanName } = useParams();
+  const [isDisabled, setIsDisabled] = useState(true);
+  const { pokemonName } = useParams();
 
-  const pokemonData = pokemon.pokemonData.pokemon;
+  const pokemonData = pokemon.pokemonData.hasOwnProperty("pokemon")
+    ? pokemon.pokemonData.pokemon
+    : {};
 
   const { data } = useQuery(GET_POKEMON, {
-    variables: { name: pokemanName },
+    variables: { name: pokemonName },
   });
 
   // console.log(data);
+
+  useEffect(() => {
+    if (pokemon.myPokemon.some((item) => item.name === pokemonName)) {
+      setIsDisabled(false);
+    }
+  }, [pokemon.myPokemon, pokemonName]);
 
   useEffect(() => {
     if (data) {
@@ -70,18 +88,26 @@ export default function PokemonDetail() {
     water: "#539DDF",
   };
 
+  const catchHandler = () => {
+    dispatch(addMyPokemon(pokemonData));
+  };
+
   return (
     <>
       <Header />
       <Container>
         <DetailsPokemon>
-          <Title>{pokemanName}</Title>
+          <Title>{pokemonName}</Title>
 
           {pokemon.isLoading ? (
             "Loading..."
           ) : (
             <ImagePokemon
-              src={pokemonData.sprites.front_default}
+              src={
+                pokemonData.hasOwnProperty("sprites")
+                  ? pokemonData.sprites.front_default
+                  : ""
+              }
               alt="pokemonImage"
             />
           )}
@@ -90,50 +116,69 @@ export default function PokemonDetail() {
             <Weight>Weight: {pokemonData.weight} kg</Weight>
           </Physique>
           <Types>
-            {pokemonData.types.map((data, i) => {
-              const colorType = data.type.name;
-              const colorFinal = color[colorType];
-              return (
-                <PokemonTypeWrapper key={i}>
-                  <PokemonIconWrapper
-                    key={i}
-                    style={{
-                      background: colorFinal,
-                      boxShadow: `0 0 20px ${colorFinal}`,
-                    }}
-                  >
-                    <PokemonIcon
-                      key={i}
-                      src={require("../../assets/icons/" +
-                        data.type.name +
-                        ".png")}
-                      alt="pokemonIcons"
-                    />
-                  </PokemonIconWrapper>
-                  <PokemonTypeName>{data.type.name}</PokemonTypeName>
-                </PokemonTypeWrapper>
-              );
-            })}
+            {pokemonData.hasOwnProperty("types")
+              ? pokemonData.types.map((data, i) => {
+                  const colorType = data.type.name;
+                  const colorFinal = color[colorType];
+                  return (
+                    <PokemonTypeWrapper key={i}>
+                      <PokemonIconWrapper
+                        key={i}
+                        style={{
+                          background: colorFinal,
+                          boxShadow: `0 0 20px ${colorFinal}`,
+                        }}
+                      >
+                        <PokemonIcon
+                          key={i}
+                          src={require("../../assets/icons/" +
+                            data.type.name +
+                            ".png")}
+                          alt="pokemonIcons"
+                        />
+                      </PokemonIconWrapper>
+                      <PokemonTypeName>{data.type.name}</PokemonTypeName>
+                    </PokemonTypeWrapper>
+                  );
+                })
+              : ""}
           </Types>
         </DetailsPokemon>
+
         <PowerPokemon>
           <Abilities>
             <PowerPokemonTitle>Abilities</PowerPokemonTitle>
             <ListAbilities>
-              {pokemonData.abilities.map((data, i) => (
-                <div key={i}>{data.ability.name}</div>
-              ))}
+              {pokemonData.hasOwnProperty("abilities")
+                ? pokemonData.abilities.map((data, i) => (
+                    <div key={i}>{data.ability.name}</div>
+                  ))
+                : ""}
             </ListAbilities>
           </Abilities>
           <Moves>
             <PowerPokemonTitle>Moves</PowerPokemonTitle>
             <ListMoves>
-              {pokemonData.moves.map((data, i) => (
-                <div key={i}>{data.move.name}</div>
-              ))}
+              {pokemonData.hasOwnProperty("moves")
+                ? pokemonData.moves.map((data, i) => (
+                    <div key={i}>{data.move.name}</div>
+                  ))
+                : ""}
             </ListMoves>
           </Moves>
         </PowerPokemon>
+
+        {isDisabled ? (
+          <ButtonCatch onClick={() => catchHandler()}>
+            <ButtonCatchTitle>Catch Pokemon</ButtonCatchTitle>
+            <ButtonCatchImg src={pokemonBall} alt="pokemonBall" />
+          </ButtonCatch>
+        ) : (
+          <ButtonCatchDisabled onClick={() => catchHandler()} disabled>
+            <ButtonCatchTitle>Catch Pokemon</ButtonCatchTitle>
+            <ButtonCatchImg src={pokemonBall} alt="pokemonBall" />
+          </ButtonCatchDisabled>
+        )}
       </Container>
     </>
   );
