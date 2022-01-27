@@ -5,6 +5,7 @@ import {
   GET_POKEMONS_SUCCESS,
   ADD_MY_POKEMON_SUCCESS,
   DELETE_MY_POKEMON_SUCCESS,
+  EDIT_MY_POKEMON_SUCCESS,
 } from "../../actionTypes";
 
 const initialState = {
@@ -74,6 +75,19 @@ const pokemonReducer = (state = initialState, action) => {
         isLoading: false,
         myPokemon: state.myPokemon.filter((data) => data.id !== id),
         message: "Delete Pokemon Success",
+      };
+
+    case EDIT_MY_POKEMON_SUCCESS:
+      return {
+        ...state,
+        isError: false,
+        isLoading: false,
+        myPokemon: state.myPokemon.map((data) =>
+          data.id === action.payload.id
+            ? { ...data, name: action.payload.name }
+            : data
+        ),
+        message: "Edit Pokemon Success",
       };
 
     default:

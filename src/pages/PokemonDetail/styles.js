@@ -19,6 +19,13 @@ export const DetailsPokemon = styled.div({
   paddingBottom: "20px",
 });
 
+export const TitleWrapper = styled.div({
+  display: "flex",
+  alignItems: "center",
+  gap: "10px",
+  cursor: "pointer",
+});
+
 export const Title = styled.h1`
   font-size: 24px;
   text-transform: uppercase;
@@ -32,6 +39,43 @@ export const Title = styled.h1`
   }
   color: #000'
 `;
+
+export const FormEdit = styled.form({
+  display: "flex",
+  alignItems: "center",
+});
+
+export const EditIcon = styled.img({
+  width: "20px",
+  height: "20px",
+});
+
+export const InputPokemonName = styled.input({
+  background: "#fff",
+  border: "none",
+  borderBottom: "2px solid #fff",
+  borderRadius: "4px",
+  height: "29px",
+  padding: "0 5px",
+  fontSize: "16px",
+  fontFamily: "Mulish",
+  fontWeight: "bold",
+  textTransform: "uppercase",
+  textAlign: "center",
+});
+
+export const ButtonEdit = styled.button({
+  padding: "0 15px",
+  height: "29px",
+  border: "none",
+  borderRadius: "4px",
+  background: "#14fc33",
+  color: "#fff",
+  fontSize: "16px",
+  fontFamily: "Mulish",
+  fontWeight: "bold",
+  marginLeft: "10px",
+});
 
 export const ImagePokemon = styled.img({
   width: "150px",

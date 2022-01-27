@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import Header from "../../components/Header";
 
@@ -11,14 +12,22 @@ import { GET_POKEMON } from "../../apollo/queries/pokemons";
 import {
   getPokemon,
   addMyPokemon,
+  editPokemon,
 } from "../../redux/store/actions/pokemonAction";
 
 import pokemonBall from "../../assets/images/pokeball.png";
+import editIcon from "../../assets/icons/pencil.png";
+import cancelIcon from "../../assets/icons/cancel.png";
 
 import {
   Container,
   DetailsPokemon,
+  TitleWrapper,
   Title,
+  FormEdit,
+  EditIcon,
+  ButtonEdit,
+  InputPokemonName,
   ImagePokemon,
   Physique,
   Height,
@@ -41,10 +50,13 @@ import {
 } from "./styles";
 
 export default function PokemonDetail() {
+  const { pokemonName } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const pokemon = useSelector((state) => state.pokemon);
   const [isDisabled, setIsDisabled] = useState(true);
-  const { pokemonName } = useParams();
+  const [isShowForm, setShowForm] = useState(false);
+  const [newPokemonName, setNewPokemonName] = useState(pokemonName);
 
   const pokemonData = pokemon.pokemonData.hasOwnProperty("pokemon")
     ? pokemon.pokemonData.pokemon
@@ -59,10 +71,10 @@ export default function PokemonDetail() {
   // console.log(data);
 
   useEffect(() => {
-    if (myPokemon.some((item) => item.name === pokemonName)) {
+    if (myPokemon.some((item) => item.id === pokemonData.id)) {
       setIsDisabled(false);
     }
-  }, [myPokemon, pokemonName]);
+  }, [myPokemon, pokemonData.id]);
 
   useEffect(() => {
     if (data) {
@@ -91,6 +103,22 @@ export default function PokemonDetail() {
     water: "#539DDF",
   };
 
+  const handleChange = (e) => {
+    setNewPokemonName(e.target.value);
+  };
+
+  const payload = {
+    id: pokemonData.id,
+    name: newPokemonName,
+  };
+
+  const editPokemonName = () => {
+    dispatch(editPokemon(payload));
+    navigate(`/my-pokemon`);
+
+    toast.success("Nice, You have successfully changed pokemon name");
+  };
+
   const catchHandler = () => {
     if (Math.random() < 0.5) {
       toast.warning("Try Again! You Almost Got It");
@@ -106,7 +134,39 @@ export default function PokemonDetail() {
       <Header />
       <Container>
         <DetailsPokemon>
-          <Title>{pokemonName}</Title>
+          <TitleWrapper>
+            {isShowForm ? (
+              <FormEdit onSubmit={editPokemonName}>
+                <InputPokemonName
+                  type="text"
+                  name="pokemonName"
+                  value={newPokemonName}
+                  onChange={handleChange}
+                />
+                <ButtonEdit>Save</ButtonEdit>
+              </FormEdit>
+            ) : (
+              <Title>{pokemonName}</Title>
+            )}
+
+            {!isDisabled ? (
+              !isShowForm ? (
+                <EditIcon
+                  src={editIcon}
+                  alt="editIcon"
+                  onClick={() => setShowForm(true)}
+                />
+              ) : (
+                <EditIcon
+                  src={cancelIcon}
+                  alt="cancelIcon"
+                  onClick={() => setShowForm(false)}
+                />
+              )
+            ) : (
+              ""
+            )}
+          </TitleWrapper>
 
           {pokemon.isLoading ? (
             "Loading..."

@@ -11,6 +11,7 @@ export const Container = styled.div({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
+  height: "100vh",
 });
 
 export const Title = styled.p({
