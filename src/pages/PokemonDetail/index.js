@@ -50,6 +50,8 @@ export default function PokemonDetail() {
     ? pokemon.pokemonData.pokemon
     : {};
 
+  const myPokemon = pokemon.myPokemon.length > 0 ? pokemon.myPokemon : [];
+
   const { data } = useQuery(GET_POKEMON, {
     variables: { name: pokemonName },
   });
@@ -57,10 +59,10 @@ export default function PokemonDetail() {
   // console.log(data);
 
   useEffect(() => {
-    if (pokemon.myPokemon.some((item) => item.name === pokemonName)) {
+    if (myPokemon.some((item) => item.name === pokemonName)) {
       setIsDisabled(false);
     }
-  }, [pokemon.myPokemon, pokemonName]);
+  }, [myPokemon, pokemonName]);
 
   useEffect(() => {
     if (data) {
@@ -95,6 +97,7 @@ export default function PokemonDetail() {
     } else {
       toast.success("Success! You got it");
       dispatch(addMyPokemon(pokemonData));
+      console.log(pokemonData);
     }
   };
 

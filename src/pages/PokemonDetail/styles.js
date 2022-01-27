@@ -4,7 +4,7 @@ import font from "../../assets/fonts/BarcadeBrawl.ttf";
 
 export const Container = styled.div({
   position: "relative",
-  marginBottom: "100px",
+  marginBottom: "30px",
 });
 
 export const DetailsPokemon = styled.div({

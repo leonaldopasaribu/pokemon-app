@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div({
-  padding: "30px 5% 120px 5%",
+  padding: "30px 5%",
 });
 
 export const Details = styled.div({

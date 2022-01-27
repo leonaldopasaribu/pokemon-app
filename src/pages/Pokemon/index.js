@@ -22,9 +22,7 @@ export default function Dashboard() {
     variables: { limit: limit, offset: offset },
   });
 
-  const count = pokemon.data.hasOwnProperty("pokemons")
-    ? pokemon.data.pokemons.count
-    : "";
+  const count = pokemon.data.count;
 
   useEffect(() => {
     if (loading) return "Loading...";

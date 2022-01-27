@@ -1,19 +1,16 @@
 import {
-  GET_POKEMON_REQUEST,
+  ACTION_POKEMONS_REQUEST,
+  ACTION_POKEMONS_ERROR,
   GET_POKEMON_SUCCESS,
-  GET_POKEMON_ERROR,
-  GET_POKEMONS_REQUEST,
   GET_POKEMONS_SUCCESS,
-  GET_POKEMONS_ERROR,
-  ADD_MY_POKEMON_REQUEST,
   ADD_MY_POKEMON_SUCCESS,
-  ADD_MY_POKEMON_ERROR,
+  DELETE_MY_POKEMON_SUCCESS,
 } from "../../actionTypes";
 
 const initialState = {
   data: {},
   pokemonData: {},
-  myPokemon: {},
+  myPokemon: [],
   isLoading: false,
   errorMessage: "",
   message: "",
@@ -22,13 +19,23 @@ const initialState = {
 
 const pokemonReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_POKEMONS_REQUEST:
+    case ACTION_POKEMONS_REQUEST:
       return {
         ...state,
         isLoading: true,
-        errorMessage: null,
+        errorMessage: "",
         isError: false,
+        message: "",
       };
+
+    case ACTION_POKEMONS_ERROR:
+      return {
+        ...state,
+        isLoading: true,
+        errorMessage: action.payload,
+        isError: true,
+      };
+
     case GET_POKEMONS_SUCCESS:
       return {
         ...state,
@@ -36,22 +43,9 @@ const pokemonReducer = (state = initialState, action) => {
         errorMessage: null,
         isError: false,
         data: action.payload,
-      };
-    case GET_POKEMONS_ERROR:
-      return {
-        ...state,
-        isLoading: true,
-        errorMessage: null,
-        isError: false,
+        message: "Get Pokemons Data Success",
       };
 
-    case GET_POKEMON_REQUEST:
-      return {
-        ...state,
-        isLoading: true,
-        errorMessage: null,
-        isError: false,
-      };
     case GET_POKEMON_SUCCESS:
       return {
         ...state,
@@ -59,22 +53,9 @@ const pokemonReducer = (state = initialState, action) => {
         errorMessage: null,
         isError: false,
         pokemonData: action.payload,
-      };
-    case GET_POKEMON_ERROR:
-      return {
-        ...state,
-        isLoading: true,
-        errorMessage: null,
-        isError: false,
+        message: "Get Pokemon Data Success",
       };
 
-    case ADD_MY_POKEMON_REQUEST:
-      return {
-        ...state,
-        isLoading: true,
-        errorMessage: null,
-        isError: false,
-      };
     case ADD_MY_POKEMON_SUCCESS:
       return {
         ...state,
@@ -82,13 +63,17 @@ const pokemonReducer = (state = initialState, action) => {
         errorMessage: null,
         isError: false,
         myPokemon: [...state.myPokemon, action.payload],
+        message: "Add Pokemon Success",
       };
-    case ADD_MY_POKEMON_ERROR:
+
+    case DELETE_MY_POKEMON_SUCCESS:
+      const id = action.payload;
       return {
         ...state,
-        isLoading: true,
-        errorMessage: null,
         isError: false,
+        isLoading: false,
+        myPokemon: state.myPokemon.filter((data) => data.id !== id),
+        message: "Delete Pokemon Success",
       };
 
     default:
