@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../../components/Header";
+import { Loader } from "../../components/Global";
 
 import { GET_POKEMON } from "../../apollo/queries/pokemons";
 
@@ -16,8 +17,7 @@ import {
 } from "../../redux/store/actions/pokemonAction";
 
 import pokemonBall from "../../assets/images/pokeball.png";
-import editIcon from "../../assets/icons/pencil.png";
-import cancelIcon from "../../assets/icons/cancel.png";
+import { editIcon, cancelIcon } from "../../assets/icons";
 
 import {
   Container,
@@ -57,12 +57,15 @@ export default function PokemonDetail() {
   const [isDisabled, setIsDisabled] = useState(true);
   const [isShowForm, setShowForm] = useState(false);
   const [newPokemonName, setNewPokemonName] = useState(pokemonName);
+  const [isLoading, setIsLoading] = useState(true);
 
   const pokemonData = pokemon.pokemonData.hasOwnProperty("pokemon")
     ? pokemon.pokemonData.pokemon
     : {};
 
-  const myPokemon = pokemon.myPokemon.length > 0 ? pokemon.myPokemon : [];
+  const myPokemon = useMemo(() => pokemon.myPokemon, [pokemon.myPokemon]);
+
+  const pokemonId = pokemonData.id;
 
   const { data } = useQuery(GET_POKEMON, {
     variables: { name: pokemonName },
@@ -71,16 +74,23 @@ export default function PokemonDetail() {
   // console.log(data);
 
   useEffect(() => {
-    if (myPokemon.some((item) => item.id === pokemonData.id)) {
+    if (myPokemon.some((item) => item.id === pokemonId)) {
       setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
     }
-  }, [myPokemon, pokemonData.id]);
+  }, [myPokemon, pokemonId]);
 
   useEffect(() => {
     if (data) {
       dispatch(getPokemon(data));
     }
   }, [data, dispatch]);
+
+  useEffect(() => {
+    const loading = setTimeout(() => setIsLoading(false), 1000);
+    return () => clearTimeout(loading);
+  }, []);
 
   const color = {
     grass: "#5FBD58",
@@ -131,124 +141,129 @@ export default function PokemonDetail() {
 
   return (
     <>
-      <Header />
-      <Container>
-        <DetailsPokemon>
-          <TitleWrapper>
-            {isShowForm ? (
-              <FormEdit onSubmit={editPokemonName}>
-                <InputPokemonName
-                  type="text"
-                  name="pokemonName"
-                  value={newPokemonName}
-                  onChange={handleChange}
-                />
-                <ButtonEdit>Save</ButtonEdit>
-              </FormEdit>
-            ) : (
-              <Title>{pokemonName}</Title>
-            )}
+      {isLoading && <Loader />}
+      {!isLoading && (
+        <>
+          <Header />
+          <Container>
+            <DetailsPokemon>
+              <TitleWrapper>
+                {isShowForm ? (
+                  <FormEdit onSubmit={editPokemonName}>
+                    <InputPokemonName
+                      type="text"
+                      name="pokemonName"
+                      value={newPokemonName}
+                      onChange={handleChange}
+                    />
+                    <ButtonEdit>Save</ButtonEdit>
+                  </FormEdit>
+                ) : (
+                  <Title>{pokemonName}</Title>
+                )}
 
-            {!isDisabled ? (
-              !isShowForm ? (
-                <EditIcon
-                  src={editIcon}
-                  alt="editIcon"
-                  onClick={() => setShowForm(true)}
-                />
+                {!isDisabled ? (
+                  !isShowForm ? (
+                    <EditIcon
+                      src={editIcon}
+                      alt="editIcon"
+                      onClick={() => setShowForm(true)}
+                    />
+                  ) : (
+                    <EditIcon
+                      src={cancelIcon}
+                      alt="cancelIcon"
+                      onClick={() => setShowForm(false)}
+                    />
+                  )
+                ) : (
+                  ""
+                )}
+              </TitleWrapper>
+
+              {pokemon.isLoading ? (
+                "Loading..."
               ) : (
-                <EditIcon
-                  src={cancelIcon}
-                  alt="cancelIcon"
-                  onClick={() => setShowForm(false)}
+                <ImagePokemon
+                  src={
+                    pokemonData.hasOwnProperty("sprites")
+                      ? pokemonData.sprites.front_default
+                      : ""
+                  }
+                  alt="pokemonImage"
                 />
-              )
+              )}
+              <Physique>
+                <Height>Height: {pokemonData.height} m</Height>
+                <Weight>Weight: {pokemonData.weight} kg</Weight>
+              </Physique>
+              <Types>
+                {pokemonData.hasOwnProperty("types")
+                  ? pokemonData.types.map((data, i) => {
+                      const colorType = data.type.name;
+                      const colorFinal = color[colorType];
+                      return (
+                        <PokemonTypeWrapper key={i}>
+                          <PokemonIconWrapper
+                            key={i}
+                            style={{
+                              background: colorFinal,
+                              boxShadow: `0 0 20px ${colorFinal}`,
+                            }}
+                          >
+                            <PokemonIcon
+                              key={i}
+                              src={require("../../assets/icons/" +
+                                data.type.name +
+                                ".png")}
+                              alt="pokemonIcons"
+                            />
+                          </PokemonIconWrapper>
+                          <PokemonTypeName>{data.type.name}</PokemonTypeName>
+                        </PokemonTypeWrapper>
+                      );
+                    })
+                  : ""}
+              </Types>
+            </DetailsPokemon>
+
+            <PowerPokemon>
+              <Abilities>
+                <PowerPokemonTitle>Abilities</PowerPokemonTitle>
+                <ListAbilities>
+                  {pokemonData.hasOwnProperty("abilities")
+                    ? pokemonData.abilities.map((data, i) => (
+                        <div key={i}>{data.ability.name}</div>
+                      ))
+                    : ""}
+                </ListAbilities>
+              </Abilities>
+              <Moves>
+                <PowerPokemonTitle>Moves</PowerPokemonTitle>
+                <ListMoves>
+                  {pokemonData.hasOwnProperty("moves")
+                    ? pokemonData.moves.map((data, i) => (
+                        <div key={i}>{data.move.name}</div>
+                      ))
+                    : ""}
+                </ListMoves>
+              </Moves>
+            </PowerPokemon>
+
+            {isDisabled ? (
+              <ButtonCatch onClick={() => catchHandler()}>
+                <ButtonCatchTitle>Catch Pokemon</ButtonCatchTitle>
+                <ButtonCatchImg src={pokemonBall} alt="pokemonBall" />
+              </ButtonCatch>
             ) : (
-              ""
+              <ButtonCatchDisabled onClick={() => catchHandler()} disabled>
+                <ButtonCatchTitle>Catch Pokemon</ButtonCatchTitle>
+                <ButtonCatchImg src={pokemonBall} alt="pokemonBall" />
+              </ButtonCatchDisabled>
             )}
-          </TitleWrapper>
-
-          {pokemon.isLoading ? (
-            "Loading..."
-          ) : (
-            <ImagePokemon
-              src={
-                pokemonData.hasOwnProperty("sprites")
-                  ? pokemonData.sprites.front_default
-                  : ""
-              }
-              alt="pokemonImage"
-            />
-          )}
-          <Physique>
-            <Height>Height: {pokemonData.height} m</Height>
-            <Weight>Weight: {pokemonData.weight} kg</Weight>
-          </Physique>
-          <Types>
-            {pokemonData.hasOwnProperty("types")
-              ? pokemonData.types.map((data, i) => {
-                  const colorType = data.type.name;
-                  const colorFinal = color[colorType];
-                  return (
-                    <PokemonTypeWrapper key={i}>
-                      <PokemonIconWrapper
-                        key={i}
-                        style={{
-                          background: colorFinal,
-                          boxShadow: `0 0 20px ${colorFinal}`,
-                        }}
-                      >
-                        <PokemonIcon
-                          key={i}
-                          src={require("../../assets/icons/" +
-                            data.type.name +
-                            ".png")}
-                          alt="pokemonIcons"
-                        />
-                      </PokemonIconWrapper>
-                      <PokemonTypeName>{data.type.name}</PokemonTypeName>
-                    </PokemonTypeWrapper>
-                  );
-                })
-              : ""}
-          </Types>
-        </DetailsPokemon>
-
-        <PowerPokemon>
-          <Abilities>
-            <PowerPokemonTitle>Abilities</PowerPokemonTitle>
-            <ListAbilities>
-              {pokemonData.hasOwnProperty("abilities")
-                ? pokemonData.abilities.map((data, i) => (
-                    <div key={i}>{data.ability.name}</div>
-                  ))
-                : ""}
-            </ListAbilities>
-          </Abilities>
-          <Moves>
-            <PowerPokemonTitle>Moves</PowerPokemonTitle>
-            <ListMoves>
-              {pokemonData.hasOwnProperty("moves")
-                ? pokemonData.moves.map((data, i) => (
-                    <div key={i}>{data.move.name}</div>
-                  ))
-                : ""}
-            </ListMoves>
-          </Moves>
-        </PowerPokemon>
-
-        {isDisabled ? (
-          <ButtonCatch onClick={() => catchHandler()}>
-            <ButtonCatchTitle>Catch Pokemon</ButtonCatchTitle>
-            <ButtonCatchImg src={pokemonBall} alt="pokemonBall" />
-          </ButtonCatch>
-        ) : (
-          <ButtonCatchDisabled onClick={() => catchHandler()} disabled>
-            <ButtonCatchTitle>Catch Pokemon</ButtonCatchTitle>
-            <ButtonCatchImg src={pokemonBall} alt="pokemonBall" />
-          </ButtonCatchDisabled>
-        )}
-      </Container>
+          </Container>
+        </>
+      )}
     </>
   );
 }
