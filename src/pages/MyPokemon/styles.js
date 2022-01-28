@@ -31,3 +31,10 @@ export const Description = styled.p`
     width: 300px;
   }
 `;
+
+export const EmptyMessage = styled.p`
+  font-size: 16px;
+  font-weight: 600;
+  font-family: Mulish;
+  text-align: center;
+`;

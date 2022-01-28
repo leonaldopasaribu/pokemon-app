@@ -27,17 +27,21 @@ export const TitleWrapper = styled.div({
 });
 
 export const Title = styled.p`
-  font-size: 22px;
+  font-size: 24px;
   text-transform: uppercase;
   font-weight: 600;
   font-family: barcadebrawl;
-  color: #000';
+  color: #000;
   @font-face {
     font-family: barcadebrawl;
     src: url(${font}) format("truetype");
     font-weight: normal;
     font-style: normal;
-  }; 
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 14px;
+  } ;
 `;
 
 export const FormEdit = styled.form({
