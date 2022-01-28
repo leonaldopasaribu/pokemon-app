@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { Container, Pokemons, EmptyMessage } from "./styles";
+import { Container, Pokemons } from "./styles";
 
 import CardPokemon from "../Global/Card";
 
@@ -23,13 +23,6 @@ const PokemonList = ({ type }) => {
               <CardPokemon type={"my-pokemon"} key={i} data={data} />
             ))}
       </Pokemons>
-      {pokemon.myPokemon.length > 0 ? (
-        ""
-      ) : (
-        <EmptyMessage>
-          You don't have any Pokemon, Try to catch it.
-        </EmptyMessage>
-      )}
     </Container>
   );
 };
