@@ -125,15 +125,14 @@ export default function PokemonDetail() {
   const editPokemonName = () => {
     dispatch(editPokemon(payload));
     navigate(`/my-pokemon`);
-
-    toast.success("Nice, You have successfully changed pokemon name");
+    toast.success("You have successfully changed pokemon name");
   };
 
   const catchHandler = () => {
     if (Math.random() < 0.5) {
       toast.warning("Try Again! You Almost Got It");
     } else {
-      toast.success("Success! You got it");
+      toast.success("Nice! You got it");
       dispatch(addMyPokemon(pokemonData));
       console.log(pokemonData);
     }

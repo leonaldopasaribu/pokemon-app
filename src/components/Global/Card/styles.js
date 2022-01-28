@@ -27,6 +27,11 @@ export const Card = styled.div`
       props.type === "my-pokemon" ? " none" : "scale(1.1)"};
     transition: ${(props) => (props.type === "my-pokemon" ? "0s" : "0.3s")};
   }
+
+  @media only screen and (max-width: 600px) {
+    min-width: 100px;
+    padding: 1.2rem 0;
+  }
 `;
 export const CardNumber = styled.div`
   font-size: 14px;
@@ -38,11 +43,19 @@ export const CardNumber = styled.div`
     font-weight: normal;
     font-style: normal;
   }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+  }
 `;
 
 export const CardImage = styled.img`
   width: 150px;
   height: auto;
+
+  @media only screen and (max-width: 600px) {
+    width: 100px;
+  }
 `;
 
 export const CardName = styled.div`
@@ -54,6 +67,10 @@ export const CardName = styled.div`
     src: url(${font}) format("truetype");
     font-weight: normal;
     font-style: normal;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
   }
 `;
 
@@ -68,4 +85,9 @@ export const CardButton = styled.button`
   color: #fff;
   padding: 15px;
   box-shadow: 2px 1px 30px #00000029;
+
+  @media only screen and (max-width: 600px) {
+    padding: 15px;
+    font-size: 12px;
+  }
 `;

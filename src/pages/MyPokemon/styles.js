@@ -9,16 +9,25 @@ export const Details = styled.div({
   paddingBottom: "20px",
 });
 
-export const Title = styled.h1({
-  fontSize: "36px",
-  textTransform: "uppercase",
-  fontWeight: "800",
-  color:'#14fc33'
-});
+export const Title = styled.h1`
+  font-size: 36px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #14fc33;
 
-export const Description = styled.p({
-  fontFamily: "Mulish",
-  fontSize: "18px",
-  fontWeight: "300",
-  paddingTop: "10px",
-});
+  @media only screen and (max-width: 600px) {
+    font-size: 24px;
+  }
+`;
+
+export const Description = styled.p`
+  font-family: Mulish;
+  font-size: 18px;
+  font-weight: 300;
+  padding-top: 10px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 16px;
+    width: 300px;
+  }
+`;

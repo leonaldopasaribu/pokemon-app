@@ -10,6 +10,8 @@ import {
   TitleBold,
   Description,
   Button,
+  ImagePikachu,
+  ImagePokeBall,
 } from "./styles";
 
 import pikachu from "../../assets/images/pikachu.png";
@@ -34,10 +36,10 @@ export default function Dashboard() {
             </NavLink>
           </div>
           <div>
-            <img src={pikachu} alt="pikachuImages" />
+            <ImagePikachu src={pikachu} alt="pikachuImages" />
           </div>
           <div>
-            <img src={pokeball} alt="pikachuImages" width={100} />
+            <ImagePokeBall src={pokeball} alt="pikachuImages" width={100} />
           </div>
         </Container>
       </WrapperDashboard>

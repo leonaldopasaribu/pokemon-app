@@ -16,7 +16,7 @@ export default function Dashboard() {
   const dispatch = useDispatch();
   const pokemon = useSelector((state) => state.pokemon);
   const [offset, setOffset] = useState(0);
-  const [limit] = useState(12);
+  const [limit] = useState(16);
 
   const { loading, error, data } = useQuery(GET_POKEMONS, {
     variables: { limit: limit, offset: offset },

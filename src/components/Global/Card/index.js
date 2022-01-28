@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { usePalette } from "react-palette";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 import { AppContext } from "../../../context/AppContext";
 
@@ -19,6 +20,7 @@ const CardPokemon = ({ data, type }) => {
 
   const deleteHandler = () => {
     dispatch(deletePokemon(data.id));
+    toast.success("You have successfully release pokemon");
   };
 
   return (

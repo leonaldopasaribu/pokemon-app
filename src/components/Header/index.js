@@ -1,18 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import { header } from "./styles";
-
 import pokemonLogo from "../../assets/images/pokemon-logo.png";
 
-const Dashboard = () => {
-  return (
-    <header className={header}>
-      <nav className={navbar}>
-        <img src={pokemonLogo} alt="pokemonLogo" />
+import { HeaderWrapper, Nav, PokemonLogo, Menu } from "./styles";
 
+const Header = () => {
+  return (
+    <HeaderWrapper>
+      <Nav>
+        <NavLink to="/">
+          <PokemonLogo src={pokemonLogo} alt="pokemonLogo" />
+        </NavLink>
         <div>
-          <ul className={menu}>
+          <Menu>
             <NavLink to="/">
               <li>Home</li>
             </NavLink>
@@ -22,14 +23,11 @@ const Dashboard = () => {
             <NavLink to="/my-pokemon">
               <li>My Pokemon</li>
             </NavLink>
-          </ul>
+          </Menu>
         </div>
-      </nav>
-    </header>
+      </Nav>
+    </HeaderWrapper>
   );
 };
 
-export default Dashboard;
-
-const navbar = header + "--navbar";
-const menu = header + "--menu";
+export default Header;

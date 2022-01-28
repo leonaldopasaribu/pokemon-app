@@ -6,39 +6,68 @@ export const WrapperDashboard = styled.div({
   minHeight: "auto",
 });
 
-export const Container = styled.div({
-  padding: "0 5%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  height: "100vh",
-});
+export const Container = styled.div`
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+`;
 
-export const Title = styled.p({
-  fontSize: "56px;",
-  fontFamily: "Mulish",
-  fontWeight: "300",
-});
+export const Title = styled.p`
+  font-size: 56px;
+  font-family:Mulish,
+  font-weight: 300;
 
-export const TitleBold = styled.p({
-  fontSize: "56px;",
-  fontFamily: "Mulish",
-  fontWeight: "600",
-});
+  @media only screen and (max-width: 600px) {
+    font-size: 24px;
+  }
+`;
 
-export const Description = styled.p({
-  fontSize: "22px;",
-  fontFamily: "Mulish",
-  paddingTop: "20px",
-});
+export const TitleBold = styled.p`
+  font-size: 56px;
+  font-family: Mulish;
+  font-weight: 600;
 
-export const Button = styled.button({
-  marginTop: "20px",
-  fontSize: "18px;",
-  fontWeight: "600",
-  border: "none",
-  background: "#14fc33",
-  color: "#fff",
-  padding: "20px",
-  boxShadow: "2px 1px 30px #00000029",
-});
+  @media only screen and (max-width: 600px) {
+    font-size: 24px;
+  }
+`;
+
+export const Description = styled.p`
+  font-size: 22px;
+  font-family: Mulish;
+  padding-top: 20px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+  }
+`;
+
+export const Button = styled.button`
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  background: #14fc33;
+  color: #fff;
+  padding: 20px;
+  box-shadow: 2px 1px 30px #00000029;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+    padding: 15px;
+  }
+`;
+
+export const ImagePikachu = styled.img`
+  @media only screen and (max-width: 600px) {
+    width: 100px;
+  }
+`;
+
+export const ImagePokeBall = styled.img`
+  @media only screen and (max-width: 600px) {
+    width: 40px;
+  }
+`;

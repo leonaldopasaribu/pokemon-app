@@ -21,4 +21,10 @@ export const Button = styled.button`
     opacity: 0.8;
     transition: 0.3s;
   }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+    height: auto;
+    padding: 10px;
+  }
 `;

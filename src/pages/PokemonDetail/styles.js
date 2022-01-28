@@ -26,18 +26,18 @@ export const TitleWrapper = styled.div({
   cursor: "pointer",
 });
 
-export const Title = styled.h1`
-  font-size: 24px;
+export const Title = styled.p`
+  font-size: 22px;
   text-transform: uppercase;
   font-weight: 600;
   font-family: barcadebrawl;
+  color: #000';
   @font-face {
     font-family: barcadebrawl;
     src: url(${font}) format("truetype");
     font-weight: normal;
     font-style: normal;
-  }
-  color: #000'
+  }; 
 `;
 
 export const FormEdit = styled.form({
@@ -77,10 +77,14 @@ export const ButtonEdit = styled.button({
   marginLeft: "10px",
 });
 
-export const ImagePokemon = styled.img({
-  width: "150px",
-  height: "auto",
-});
+export const ImagePokemon = styled.img`
+  width: 150px;
+  height: auto;
+
+  @media only screen and (max-width: 600px) {
+    width: 120px;
+  }
+`;
 
 export const Physique = styled.div({
   display: "flex",
@@ -107,8 +111,6 @@ export const Types = styled.div({
   marginTop: "20px",
 });
 
-const water = "#539DDF";
-
 export const PokemonTypeWrapper = styled.div({
   display: "flex",
   flexDirection: "column",
@@ -118,25 +120,38 @@ export const PokemonTypeWrapper = styled.div({
   gap: "10px",
 });
 
-export const PokemonIconWrapper = styled.div({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  boxShadow: `0 0 20px ${water}`,
-  width: "50px",
-  height: "50px",
-  borderRadius: "50%",
-});
+export const PokemonIconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 
-export const PokemonIcon = styled.img({
-  width: "25px",
-  height: "25px",
-});
+  @media only screen and (max-width: 600px) {
+    width: 35px;
+    height: 35px;
+  }
+`;
 
-export const PokemonTypeName = styled.p({
-  fontFamily: "Mulish",
-  fontWeight: "300",
-});
+export const PokemonIcon = styled.img`
+  width: 25px;
+  height: 25px;
+
+  @media only screen and (max-width: 600px) {
+    width: 15px;
+    height: 15px;
+  }
+`;
+
+export const PokemonTypeName = styled.p`
+  font-family: Mulish;
+  font-weight: 300;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+  }
+`;
 
 export const PowerPokemon = styled.div({
   marginTop: "30px",
@@ -149,54 +164,79 @@ export const PowerPokemon = styled.div({
   gap: "20px",
 });
 
-export const PowerPokemonTitle = styled.h1({
-  fontSize: "28px",
-  fontStyle: "italic",
-});
+export const PowerPokemonTitle = styled.h1`
+  font-size: 28px;
+  font-style: italic;
 
-export const Abilities = styled.div({
-  width: "100%",
-  display: "grid",
-  alignItems: "center",
-  gridTemplateColumns: "200px auto",
-});
+  @media only screen and (max-width: 600px) {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+`;
 
-export const ListAbilities = styled.div({
-  width: "100%",
-  background: "#fff",
-  borderRadius: "8px",
-  boxShadow: "2px 1px 30px #00000029",
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr",
-  padding: "20px",
-  textTransform: "capitalize",
-  fontFamily: "Mulish",
-  fontWeight: "600",
-  fontSize: "18px",
-  lineHeight: "28px;",
-});
+export const Abilities = styled.div`
+  width: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 200px auto;
 
-export const Moves = styled.div({
-  width: "100%",
-  display: "grid",
-  gridTemplateColumns: "200px auto",
-  marginTop: "20px",
-});
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: auto;
+    margin-bottom: 10px;
+  }
+`;
 
-export const ListMoves = styled.div({
-  width: "100%",
-  background: "#fff",
-  borderRadius: "8px",
-  boxShadow: "2px 1px 30px #00000029",
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr",
-  padding: "20px",
-  textTransform: "capitalize",
-  fontFamily: "Mulish",
-  fontWeight: "600",
-  fontSize: "18px",
-  lineHeight: "28px;",
-});
+export const ListAbilities = styled.div`
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 2px 1px 30px #00000029;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px;
+  text-transform: capitalize;
+  font-family: Mulish;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+    padding: 15px;
+  }
+`;
+
+export const Moves = styled.div`
+  width: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 200px auto;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: auto;
+  }
+`;
+
+export const ListMoves = styled.div`
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 2px 1px 30px #00000029;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px;
+  text-transform: capitalize;
+  font-family: Mulish;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  margin-top: 20px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+    padding: 15px;
+  }
+`;
 
 export const ButtonCatch = styled.button`
   position: fixed;
