@@ -16,7 +16,8 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 600px) {
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: normal;
+    padding-top: 50px;
   }
 `;
 
@@ -79,6 +80,10 @@ export const ImageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+
+  @media only screen and (max-width: 600px) {
+    margin-top: 20px;
+  }
 `;
 
 export const ImagePikachu = styled.img`
