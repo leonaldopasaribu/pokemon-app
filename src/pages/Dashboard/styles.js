@@ -4,6 +4,7 @@ export const WrapperDashboard = styled.div({
   background: "linear-gradient(yellow, #ffd61f)",
   height: "auto",
   minHeight: "auto",
+  position: "relative",
 });
 
 export const Container = styled.div`
@@ -15,8 +16,7 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 600px) {
     flex-direction: column;
-    height: auto;
-    padding: 0 9%;
+    justify-content: space-around;
   }
 `;
 
