@@ -12,6 +12,20 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 100vh;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    height: auto;
+    padding: 0 9%;
+  }
+`;
+
+export const Left = styled.div`
+  width: 100%;
+`;
+
+export const Right = styled.div`
+  width: 100%;
 `;
 
 export const Title = styled.p`
@@ -60,14 +74,21 @@ export const Button = styled.button`
   }
 `;
 
+export const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+
 export const ImagePikachu = styled.img`
   @media only screen and (max-width: 600px) {
-    width: 100px;
+    width: 200px;
   }
 `;
 
 export const ImagePokeBall = styled.img`
   @media only screen and (max-width: 600px) {
-    width: 40px;
+    width: 50px;
   }
 `;

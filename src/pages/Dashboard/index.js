@@ -12,6 +12,9 @@ import {
   Button,
   ImagePikachu,
   ImagePokeBall,
+  Left,
+  Right,
+  ImageWrapper
 } from "./styles";
 
 import pikachu from "../../assets/images/pikachu.png";
@@ -23,7 +26,7 @@ export default function Dashboard() {
       <Header />
       <WrapperDashboard>
         <Container>
-          <div>
+          <Left>
             <TitleBold>Find all your</TitleBold>
             <Title> Favorite </Title>
             <TitleBold>Pokemon</TitleBold>
@@ -34,13 +37,13 @@ export default function Dashboard() {
             <NavLink to="/pokemon">
               <Button>See Pokemons</Button>
             </NavLink>
-          </div>
-          <div>
-            <ImagePikachu src={pikachu} alt="pikachuImages" />
-          </div>
-          <div>
-            <ImagePokeBall src={pokeball} alt="pikachuImages" width={100} />
-          </div>
+          </Left>
+          <Right>
+            <ImageWrapper>
+              <ImagePikachu src={pikachu} alt="pikachuImages" />
+              <ImagePokeBall src={pokeball} alt="pikachuImages" width={100} />
+            </ImageWrapper>
+          </Right>
         </Container>
       </WrapperDashboard>
     </>

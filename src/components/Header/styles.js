@@ -31,18 +31,20 @@ export const PokemonLogo = styled.img`
 export const Menu = styled.ul`
   display: flex;
   gap: 20px;
+`;
 
-  li {
-    list-style: none;
-    font-size: 18px;
-    font-weight: 600;
-    font-family: Mulish;
-    color: #000;
+export const MenuItem = styled.li`
+  list-style: none;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: Mulish;
+  color: #000;
+  border-bottom: 2px solid ${props => props.theme.color};
+  padding-bottom: 5px;
 
-    &:hover {
-      cursor: pointer;
-      opacity: 0.8;
-      transition: 0.3s;
-    }
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.3s;
   }
 `;
