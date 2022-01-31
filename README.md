@@ -1,6 +1,6 @@
 ## Pokemon Application
 
-![Pokemon Dashboard](https://user-images.githubusercontent.com/51619445/151532098-bd762c7d-62da-4bd1-a617-e56617dd0bad.png)
+![Pokemon Dashboard](https://user-images.githubusercontent.com/51619445/151736139-2c38e8a8-2c4f-4e22-9fc0-4c3bf3c27349.png)
 
 ## Available Scripts
 
@@ -44,6 +44,7 @@ Your app is ready to be deployed!
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 * [React.js](https://reactjs.org/)
-* Apollo
-* GraphQL
-* Emotion
+* [Apollo](https://www.apollographql.com/)
+* [GraphQL](https://graphql.org/)
+* [Emotion](https://emotion.sh/)
+* [Jest](https://jestjs.io/)
