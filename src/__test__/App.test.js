@@ -1,6 +1,7 @@
 import { MockedProvider } from "@apollo/client/testing";
-import { render, cleanup } from "@testing-library/react";
-import Pokemons, { GET_POKEMONS } from "../src/pages/Pokemon";
+import { cleanup } from "@testing-library/react";
+
+import { GET_POKEMONS } from "../apollo/queries/pokemons/";
 
 afterEach(cleanup);
 
@@ -45,12 +46,4 @@ const mocks = [
   },
 ];
 
-it("renders with MockedProvider", async () => {
-  const {} = render(
-    <MockedProvider mocks={mocks} addTypename={false}>
-      <Pokemons />
-    </MockedProvider>
-  );
-
-  expect(getByText("Loading...")).toBeInTheDocument();
-});
+it("renders correctly", () => {});

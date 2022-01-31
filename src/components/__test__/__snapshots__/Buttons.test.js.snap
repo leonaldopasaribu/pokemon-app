@@ -1,12 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot 1`] = `
-<button
-  className="css-j8msyy"
-  data-testid="button"
-/>
-`;
-
 exports[`matches snapshot Next 1`] = `
 <button
   className="css-j8msyy"
