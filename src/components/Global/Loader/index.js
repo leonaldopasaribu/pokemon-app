@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 import {
   ContainerLoader,
   Loaders,
   LoaderSpinner,
   LoaderSpinnerChild,
-} from "./styles";
+} from './styles';
 
 const Loader = () => {
   return (

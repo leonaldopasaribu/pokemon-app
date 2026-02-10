@@ -1,12 +1,12 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Container = styled.div({
-  padding: "30px 5%",
+  padding: '30px 5%',
 });
 
 export const Details = styled.div({
-  width: "450px",
-  paddingBottom: "20px",
+  width: '450px',
+  paddingBottom: '20px',
 });
 
 export const Title = styled.h1`
@@ -33,8 +33,8 @@ export const Description = styled.p`
 `;
 
 export const Pagination = styled.div({
-  marginTop: "30px",
-  display: "flex",
-  justifyContent: "center",
-  gap: "20px",
+  marginTop: '30px',
+  display: 'flex',
+  justifyContent: 'center',
+  gap: '20px',
 });

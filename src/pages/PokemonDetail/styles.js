@@ -1,29 +1,29 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
-import font from "../../assets/fonts/BarcadeBrawl.ttf";
+import font from '../../assets/fonts/BarcadeBrawl.ttf';
 
 export const Container = styled.div({
-  position: "relative",
-  marginBottom: "30px",
+  position: 'relative',
+  marginBottom: '30px',
 });
 
 export const DetailsPokemon = styled.div({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  background: "#ff0",
-  borderToLeftRadius: "0px",
-  borderTopRightRadius: "0px",
-  borderBottomRightRadius: "100%",
-  borderBottomLeftRadius: "100%",
-  paddingBottom: "20px",
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  background: '#ff0',
+  borderToLeftRadius: '0px',
+  borderTopRightRadius: '0px',
+  borderBottomRightRadius: '100%',
+  borderBottomLeftRadius: '100%',
+  paddingBottom: '20px',
 });
 
 export const TitleWrapper = styled.div({
-  display: "flex",
-  alignItems: "center",
-  gap: "10px",
-  cursor: "pointer",
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
+  cursor: 'pointer',
 });
 
 export const Title = styled.p`
@@ -34,51 +34,51 @@ export const Title = styled.p`
   color: #000;
   @font-face {
     font-family: barcadebrawl;
-    src: url(${font}) format("truetype");
+    src: url(${font}) format('truetype');
     font-weight: normal;
     font-style: normal;
   }
 
   @media only screen and (max-width: 600px) {
     font-size: 14px;
-  } ;
+  }
 `;
 
 export const FormEdit = styled.form({
-  display: "flex",
-  alignItems: "center",
+  display: 'flex',
+  alignItems: 'center',
 });
 
 export const EditIcon = styled.img({
-  width: "20px",
-  height: "20px",
+  width: '20px',
+  height: '20px',
 });
 
 export const InputPokemonName = styled.input({
-  background: "#fff",
-  border: "none",
-  borderBottom: "2px solid #fff",
-  borderRadius: "4px",
-  height: "29px",
-  padding: "0 5px",
-  fontSize: "16px",
-  fontFamily: "Mulish",
-  fontWeight: "bold",
-  textTransform: "uppercase",
-  textAlign: "center",
+  background: '#fff',
+  border: 'none',
+  borderBottom: '2px solid #fff',
+  borderRadius: '4px',
+  height: '29px',
+  padding: '0 5px',
+  fontSize: '16px',
+  fontFamily: 'Mulish',
+  fontWeight: 'bold',
+  textTransform: 'uppercase',
+  textAlign: 'center',
 });
 
 export const ButtonEdit = styled.button({
-  padding: "0 15px",
-  height: "29px",
-  border: "none",
-  borderRadius: "4px",
-  background: "#14fc33",
-  color: "#fff",
-  fontSize: "16px",
-  fontFamily: "Mulish",
-  fontWeight: "bold",
-  marginLeft: "10px",
+  padding: '0 15px',
+  height: '29px',
+  border: 'none',
+  borderRadius: '4px',
+  background: '#14fc33',
+  color: '#fff',
+  fontSize: '16px',
+  fontFamily: 'Mulish',
+  fontWeight: 'bold',
+  marginLeft: '10px',
 });
 
 export const ImagePokemon = styled.img`
@@ -91,37 +91,37 @@ export const ImagePokemon = styled.img`
 `;
 
 export const Physique = styled.div({
-  display: "flex",
-  gap: "20px",
+  display: 'flex',
+  gap: '20px',
 });
 
 export const Height = styled.p({
-  fontSize: "16px",
-  fontFamily: "Mulish",
-  fontWeight: "600",
-  fontStyle: "italic",
+  fontSize: '16px',
+  fontFamily: 'Mulish',
+  fontWeight: '600',
+  fontStyle: 'italic',
 });
 
 export const Weight = styled.p({
-  fontSize: "16px",
-  fontFamily: "Mulish",
-  fontWeight: "600",
-  fontStyle: "italic",
+  fontSize: '16px',
+  fontFamily: 'Mulish',
+  fontWeight: '600',
+  fontStyle: 'italic',
 });
 
 export const Types = styled.div({
-  display: "flex",
-  gap: "20px",
-  marginTop: "20px",
+  display: 'flex',
+  gap: '20px',
+  marginTop: '20px',
 });
 
 export const PokemonTypeWrapper = styled.div({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-  textTransform: "capitalize",
-  gap: "10px",
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textTransform: 'capitalize',
+  gap: '10px',
 });
 
 export const PokemonIconWrapper = styled.div`
@@ -158,14 +158,14 @@ export const PokemonTypeName = styled.p`
 `;
 
 export const PowerPokemon = styled.div({
-  marginTop: "30px",
-  padding: "0 5%",
-  gridTemplateColumns: "1fr 1fr",
-  justifyContent: "center",
-  alignContent: "center",
-  alignItems: "center",
-  justifyItems: "center",
-  gap: "20px",
+  marginTop: '30px',
+  padding: '0 5%',
+  gridTemplateColumns: '1fr 1fr',
+  justifyContent: 'center',
+  alignContent: 'center',
+  alignItems: 'center',
+  justifyItems: 'center',
+  gap: '20px',
 });
 
 export const PowerPokemonTitle = styled.h1`
@@ -274,16 +274,16 @@ export const ButtonCatchTitle = styled.p`
   font-family: barcadebrawl;
   @font-face {
     font-family: barcadebrawl;
-    src: url(${font}) format("truetype");
+    src: url(${font}) format('truetype');
     font-weight: normal;
     font-style: normal;
   }
 `;
 
 export const ButtonCatchImg = styled.img({
-  width: "40px",
-  height: "40px",
-  marginLeft: "10px",
+  width: '40px',
+  height: '40px',
+  marginLeft: '10px',
 });
 
 export const ButtonCatchDisabled = styled.button`

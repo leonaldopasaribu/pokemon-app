@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const ContainerLoader = styled.div`
   width: 100%;
@@ -32,7 +32,7 @@ export const LoaderSpinnerChild = styled.div`
   animation: lds-spinner 0.8s linear infinite;
 
   &:after {
-    content: " ";
+    content: ' ';
     display: block;
     position: absolute;
     top: 16px;

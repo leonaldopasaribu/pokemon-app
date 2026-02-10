@@ -1,0 +1,35 @@
+# Dependencies
+node_modules
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Build outputs
+build
+dist
+.next
+out
+coverage
+
+# Cache
+.cache
+.parcel-cache
+.eslintcache
+
+# Misc
+.DS_Store
+*.log
+*.log.*
+
+# Version control
+.git
+.svn
+.hg
+
+# IDE
+.vscode
+.idea
+
+# Other
+CHANGELOG.md
+public

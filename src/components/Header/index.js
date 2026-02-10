@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { NavLink, useLocation, useParams } from 'react-router-dom';
 
-import pokemonLogo from "../../assets/images/pokemon-logo.png";
+import pokemonLogo from '../../assets/images/pokemon-logo.png';
 
-import { HeaderWrapper, Nav, PokemonLogo, Menu, MenuItem } from "./styles";
+import { HeaderWrapper, Nav, PokemonLogo, Menu, MenuItem } from './styles';
 
 const Header = () => {
   const location = useLocation();
@@ -13,22 +13,22 @@ const Header = () => {
   const [isMyPokemon, setIsMyPokemon] = useState(false);
 
   const active = {
-    color: "#000",
+    color: '#000',
   };
 
   const notActive = {
-    color: "#ff0",
+    color: '#ff0',
   };
 
   const pathName = location.pathname;
 
   useEffect(() => {
-    if (pathName === "/my-pokemon") {
+    if (pathName === '/my-pokemon') {
       setIsHome(false);
       setIsPokemon(false);
       setIsMyPokemon(true);
     } else if (
-      pathName === "/pokemon" ||
+      pathName === '/pokemon' ||
       pathName === `/pokemon-detail/${pokemonName}`
     ) {
       setIsHome(false);

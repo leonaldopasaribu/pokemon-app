@@ -1,10 +1,10 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const WrapperDashboard = styled.div({
-  background: "linear-gradient(yellow, #ffd61f)",
-  height: "auto",
-  minHeight: "auto",
-  position: "relative",
+  background: 'linear-gradient(yellow, #ffd61f)',
+  height: 'auto',
+  minHeight: 'auto',
+  position: 'relative',
 });
 
 export const Container = styled.div`

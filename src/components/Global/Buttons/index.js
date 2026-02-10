@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { Button } from "./styles";
+import { Button } from './styles';
 
 export default function Buttons({ title, onClick, disabled }) {
   return (

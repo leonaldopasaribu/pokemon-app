@@ -1,9 +1,9 @@
-import React, { createContext } from "react";
+import React, { createContext } from 'react';
 
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const idFormatter = (number) => String(number).padStart(3, "0");
+  const idFormatter = number => String(number).padStart(3, '0');
 
   return (
     <AppContext.Provider

@@ -1,7 +1,7 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-import Header from "../../components/Header";
+import Header from '../../components/Header';
 
 import {
   WrapperDashboard,
@@ -14,11 +14,11 @@ import {
   ImagePokeBall,
   Left,
   Right,
-  ImageWrapper
-} from "./styles";
+  ImageWrapper,
+} from './styles';
 
-import pikachu from "../../assets/images/pikachu.png";
-import pokeball from "../../assets/images/pokeball-big.png";
+import pikachu from '../../assets/images/pikachu.png';
+import pokeball from '../../assets/images/pokeball-big.png';
 
 export default function Dashboard() {
   return (

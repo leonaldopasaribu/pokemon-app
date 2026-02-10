@@ -1,6 +1,6 @@
-import { Global, css } from "@emotion/react";
+import { Global, css } from '@emotion/react';
 
-import pokeball from "../assets/images/pokeball-bg.png";
+import pokeball from '../assets/images/pokeball-bg.png';
 
 const GlobalStyles = () => {
   return (
@@ -23,7 +23,7 @@ const GlobalStyles = () => {
         }
         body {
           -webkit-font-smoothing: antialiased !important;
-          font-family: "Roboto", sans-serif;
+          font-family: 'Roboto', sans-serif;
           color: #000;
           background: url(${pokeball}) no-repeat;
           background-size: 300px;
@@ -32,7 +32,9 @@ const GlobalStyles = () => {
         body,
         input,
         button {
-          font: 16px "Oxygen", sans-serif;
+          font:
+            16px 'Oxygen',
+            sans-serif;
         }
         a {
           text-decoration: none;
@@ -49,8 +51,8 @@ const GlobalStyles = () => {
         h2 {
           text-align: start;
         }
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
+        input[type='number']::-webkit-inner-spin-button,
+        input[type='number']::-webkit-outer-spin-button {
           -webkit-appearance: none;
           margin: 0;
         }

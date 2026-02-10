@@ -6,9 +6,9 @@ import {
   ADD_MY_POKEMON_SUCCESS,
   EDIT_MY_POKEMON_SUCCESS,
   DELETE_MY_POKEMON_SUCCESS,
-} from "../../actionTypes";
+} from '../../actionTypes';
 
-export const getPokemons = (data) => (dispatch) => {
+export const getPokemons = data => dispatch => {
   dispatch({ type: ACTION_POKEMONS_REQUEST });
 
   try {
@@ -19,7 +19,7 @@ export const getPokemons = (data) => (dispatch) => {
   }
 };
 
-export const getPokemon = (data) => (dispatch) => {
+export const getPokemon = data => dispatch => {
   dispatch({ type: ACTION_POKEMONS_REQUEST });
 
   try {
@@ -30,7 +30,7 @@ export const getPokemon = (data) => (dispatch) => {
   }
 };
 
-export const addMyPokemon = (data) => (dispatch) => {
+export const addMyPokemon = data => dispatch => {
   dispatch({ type: ACTION_POKEMONS_REQUEST });
 
   try {
@@ -41,7 +41,7 @@ export const addMyPokemon = (data) => (dispatch) => {
   }
 };
 
-export const deletePokemon = (id) => (dispatch) => {
+export const deletePokemon = id => dispatch => {
   dispatch({ type: ACTION_POKEMONS_REQUEST });
 
   try {
@@ -52,7 +52,7 @@ export const deletePokemon = (id) => (dispatch) => {
   }
 };
 
-export const editPokemon = (data) => (dispatch) => {
+export const editPokemon = data => dispatch => {
   dispatch({ type: ACTION_POKEMONS_REQUEST });
 
   try {

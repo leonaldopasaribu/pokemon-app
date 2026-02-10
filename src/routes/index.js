@@ -1,10 +1,10 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import Dashboard from "../pages/Dashboard";
-import Pokemon from "../pages/Pokemon";
-import PokemonDetail from "../pages/PokemonDetail";
-import MyPokemon from "../pages/MyPokemon";
+import Dashboard from '../pages/Dashboard';
+import Pokemon from '../pages/Pokemon';
+import PokemonDetail from '../pages/PokemonDetail';
+import MyPokemon from '../pages/MyPokemon';
 
 const AllRoutes = () => (
   <Routes>

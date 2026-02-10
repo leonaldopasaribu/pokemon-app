@@ -1,45 +1,45 @@
-import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { ApolloProvider } from "@apollo/client/react";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client/react';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import configureStore from "./redux/store";
+import configureStore from './redux/store';
 
-import Dashboard from "./pages/Dashboard";
-import Pokemon from "./pages/Pokemon";
-import PokemonDetail from "./pages/PokemonDetail";
-import MyPokemon from "./pages/MyPokemon";
+import Dashboard from './pages/Dashboard';
+import Pokemon from './pages/Pokemon';
+import PokemonDetail from './pages/PokemonDetail';
+import MyPokemon from './pages/MyPokemon';
 
-import { AppProvider } from "./context/AppContext";
+import { AppProvider } from './context/AppContext';
 
-import GlobalStyles from "./styles/";
+import GlobalStyles from './styles/';
 
 const { store, persistor } = configureStore();
 
 const client = new ApolloClient({
-  uri: "https://graphql-pokeapi.vercel.app/api/graphql",
+  uri: 'https://graphql-pokeapi.vercel.app/api/graphql',
   cache: new InMemoryCache(),
 });
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Dashboard />,
   },
   {
-    path: "/pokemon/",
+    path: '/pokemon/',
     element: <Pokemon />,
   },
   {
-    path: "/pokemon-detail/:pokemonName",
+    path: '/pokemon-detail/:pokemonName',
     element: <PokemonDetail />,
   },
   {
-    path: "/my-pokemon/",
+    path: '/my-pokemon/',
     element: <MyPokemon />,
   },
 ]);

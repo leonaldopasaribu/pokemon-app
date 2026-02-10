@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { useQuery } from "@apollo/client/react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useQuery } from '@apollo/client/react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import Header from "../../components/Header";
-import PokemonList from "../../components/PokemonList";
-import Buttons from "../../components/Global/Buttons/";
+import Header from '../../components/Header';
+import PokemonList from '../../components/PokemonList';
+import Buttons from '../../components/Global/Buttons/';
 
-import { GET_POKEMONS } from "../../apollo/queries/pokemons";
+import { GET_POKEMONS } from '../../apollo/queries/pokemons';
 
-import { getPokemons } from "../../redux/store/actions/pokemonAction";
+import { getPokemons } from '../../redux/store/actions/pokemonAction';
 
-import { Container, Details, Title, Description, Pagination } from "./styles";
+import { Container, Details, Title, Description, Pagination } from './styles';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
-  const pokemon = useSelector((state) => state.pokemon);
+  const pokemon = useSelector(state => state.pokemon);
   const [offset, setOffset] = useState(0);
   const [limit] = useState(16);
 
@@ -47,15 +47,15 @@ export default function Dashboard() {
           </Description>
         </Details>
 
-        <PokemonList type={"pokemons"} />
+        <PokemonList type={'pokemons'} />
         <Pagination>
           <Buttons
-            title={pokemon.isLoading === true ? "loading...." : "Previous"}
+            title={pokemon.isLoading === true ? 'loading....' : 'Previous'}
             onClick={() => setOffset(offset - limit)}
             disabled={offset === 0 ? true : false}
           />
           <Buttons
-            title={pokemon.isLoading === true ? "loading...." : "Next"}
+            title={pokemon.isLoading === true ? 'loading....' : 'Next'}
             onClick={() => setOffset(offset + limit)}
             disabled={offset > count - limit ? true : false}
           />

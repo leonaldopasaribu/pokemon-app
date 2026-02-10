@@ -6,15 +6,15 @@ import {
   ADD_MY_POKEMON_SUCCESS,
   DELETE_MY_POKEMON_SUCCESS,
   EDIT_MY_POKEMON_SUCCESS,
-} from "../../actionTypes";
+} from '../../actionTypes';
 
 const initialState = {
   data: {},
   pokemonData: {},
   myPokemon: [],
   isLoading: false,
-  errorMessage: "",
-  message: "",
+  errorMessage: '',
+  message: '',
   isError: false,
 };
 
@@ -24,9 +24,9 @@ const pokemonReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        errorMessage: "",
+        errorMessage: '',
         isError: false,
-        message: "",
+        message: '',
       };
 
     case ACTION_POKEMONS_ERROR:
@@ -44,7 +44,7 @@ const pokemonReducer = (state = initialState, action) => {
         errorMessage: null,
         isError: false,
         data: action.payload,
-        message: "Get Pokemons Data Success",
+        message: 'Get Pokemons Data Success',
       };
 
     case GET_POKEMON_SUCCESS:
@@ -54,7 +54,7 @@ const pokemonReducer = (state = initialState, action) => {
         errorMessage: null,
         isError: false,
         pokemonData: action.payload,
-        message: "Get Pokemon Data Success",
+        message: 'Get Pokemon Data Success',
       };
 
     case ADD_MY_POKEMON_SUCCESS:
@@ -64,7 +64,7 @@ const pokemonReducer = (state = initialState, action) => {
         errorMessage: null,
         isError: false,
         myPokemon: [...state.myPokemon, action.payload],
-        message: "Add Pokemon Success",
+        message: 'Add Pokemon Success',
       };
 
     case DELETE_MY_POKEMON_SUCCESS:
@@ -73,8 +73,8 @@ const pokemonReducer = (state = initialState, action) => {
         ...state,
         isError: false,
         isLoading: false,
-        myPokemon: state.myPokemon.filter((data) => data.id !== id),
-        message: "Delete Pokemon Success",
+        myPokemon: state.myPokemon.filter(data => data.id !== id),
+        message: 'Delete Pokemon Success',
       };
 
     case EDIT_MY_POKEMON_SUCCESS:
@@ -82,12 +82,12 @@ const pokemonReducer = (state = initialState, action) => {
         ...state,
         isError: false,
         isLoading: false,
-        myPokemon: state.myPokemon.map((data) =>
+        myPokemon: state.myPokemon.map(data =>
           data.id === action.payload.id
             ? { ...data, name: action.payload.name }
             : data
         ),
-        message: "Edit Pokemon Success",
+        message: 'Edit Pokemon Success',
       };
 
     default:

@@ -1,12 +1,12 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Container = styled.div({
-  padding: "30px 5%",
+  padding: '30px 5%',
 });
 
 export const Details = styled.div({
-  width: "350px",
-  paddingBottom: "20px",
+  width: '350px',
+  paddingBottom: '20px',
 });
 
 export const Title = styled.h1`

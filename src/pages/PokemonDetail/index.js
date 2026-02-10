@@ -1,23 +1,23 @@
-import React, { useEffect, useState, useMemo } from "react";
-import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client/react";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState, useMemo } from 'react';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
-import Header from "../../components/Header";
-import { Loader } from "../../components/Global";
+import Header from '../../components/Header';
+import { Loader } from '../../components/Global';
 
-import { GET_POKEMON } from "../../apollo/queries/pokemons";
+import { GET_POKEMON } from '../../apollo/queries/pokemons';
 
 import {
   getPokemon,
   addMyPokemon,
   editPokemon,
-} from "../../redux/store/actions/pokemonAction";
+} from '../../redux/store/actions/pokemonAction';
 
-import pokemonBall from "../../assets/images/pokeball.png";
-import { editIcon, cancelIcon } from "../../assets/icons";
+import pokemonBall from '../../assets/images/pokeball.png';
+import { editIcon, cancelIcon } from '../../assets/icons';
 
 import {
   Container,
@@ -47,19 +47,19 @@ import {
   ButtonCatchTitle,
   ButtonCatchImg,
   ButtonCatchDisabled,
-} from "./styles";
+} from './styles';
 
 export default function PokemonDetail() {
   const { pokemonName } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const pokemon = useSelector((state) => state.pokemon);
+  const pokemon = useSelector(state => state.pokemon);
   const [isDisabled, setIsDisabled] = useState(true);
   const [isShowForm, setShowForm] = useState(false);
   const [newPokemonName, setNewPokemonName] = useState(pokemonName);
   const [isLoading, setIsLoading] = useState(true);
 
-  const pokemonData = pokemon.pokemonData.hasOwnProperty("pokemon")
+  const pokemonData = pokemon.pokemonData.hasOwnProperty('pokemon')
     ? pokemon.pokemonData.pokemon
     : {};
 
@@ -74,7 +74,7 @@ export default function PokemonDetail() {
   // console.log(data);
 
   useEffect(() => {
-    if (myPokemon.some((item) => item.id === pokemonId)) {
+    if (myPokemon.some(item => item.id === pokemonId)) {
       setIsDisabled(false);
     } else {
       setIsDisabled(true);
@@ -93,27 +93,27 @@ export default function PokemonDetail() {
   }, []);
 
   const color = {
-    grass: "#5FBD58",
-    bug: "#92BC2C",
-    dark: "#595761",
-    dragon: "#0C69C8",
-    electric: "#F2D94E",
-    fairy: "#EE90E6",
-    fighting: "#D3425F",
-    fire: "#dc872f",
-    flying: "#A1BBEC",
-    ghost: "#5F6DBC",
-    ground: "#DA7C4D",
-    ice: "#75D0C1",
-    normal: "#A0A29F",
-    poison: "#B763CF",
-    psychic: "#ff2ca8",
-    rock: "#a38c21",
-    steel: "#5695A3",
-    water: "#539DDF",
+    grass: '#5FBD58',
+    bug: '#92BC2C',
+    dark: '#595761',
+    dragon: '#0C69C8',
+    electric: '#F2D94E',
+    fairy: '#EE90E6',
+    fighting: '#D3425F',
+    fire: '#dc872f',
+    flying: '#A1BBEC',
+    ghost: '#5F6DBC',
+    ground: '#DA7C4D',
+    ice: '#75D0C1',
+    normal: '#A0A29F',
+    poison: '#B763CF',
+    psychic: '#ff2ca8',
+    rock: '#a38c21',
+    steel: '#5695A3',
+    water: '#539DDF',
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setNewPokemonName(e.target.value);
   };
 
@@ -125,14 +125,14 @@ export default function PokemonDetail() {
   const editPokemonName = () => {
     dispatch(editPokemon(payload));
     navigate(`/my-pokemon`);
-    toast.success("You have successfully changed pokemon name");
+    toast.success('You have successfully changed pokemon name');
   };
 
   const catchHandler = () => {
     if (Math.random() < 0.5) {
-      toast.warning("Try Again! You Almost Got It");
+      toast.warning('Try Again! You Almost Got It');
     } else {
-      toast.success("Nice! You got it");
+      toast.success('Nice! You got it');
       dispatch(addMyPokemon(pokemonData));
       console.log(pokemonData);
     }
@@ -176,18 +176,18 @@ export default function PokemonDetail() {
                     />
                   )
                 ) : (
-                  ""
+                  ''
                 )}
               </TitleWrapper>
 
               {pokemon.isLoading ? (
-                "Loading..."
+                'Loading...'
               ) : (
                 <ImagePokemon
                   src={
-                    pokemonData.hasOwnProperty("sprites")
+                    pokemonData.hasOwnProperty('sprites')
                       ? pokemonData.sprites.front_default
-                      : ""
+                      : ''
                   }
                   alt="pokemonImage"
                 />
@@ -197,7 +197,7 @@ export default function PokemonDetail() {
                 <Weight>Weight: {pokemonData.weight} kg</Weight>
               </Physique>
               <Types>
-                {pokemonData.hasOwnProperty("types")
+                {pokemonData.hasOwnProperty('types')
                   ? pokemonData.types.map((data, i) => {
                       const colorType = data.type.name;
                       const colorFinal = color[colorType];
@@ -212,9 +212,9 @@ export default function PokemonDetail() {
                           >
                             <PokemonIcon
                               key={i}
-                              src={require("../../assets/icons/" +
-                                data.type.name +
-                                ".png")}
+                              src={require(
+                                '../../assets/icons/' + data.type.name + '.png'
+                              )}
                               alt="pokemonIcons"
                             />
                           </PokemonIconWrapper>
@@ -222,7 +222,7 @@ export default function PokemonDetail() {
                         </PokemonTypeWrapper>
                       );
                     })
-                  : ""}
+                  : ''}
               </Types>
             </DetailsPokemon>
 
@@ -230,21 +230,21 @@ export default function PokemonDetail() {
               <Abilities>
                 <PowerPokemonTitle>Abilities</PowerPokemonTitle>
                 <ListAbilities>
-                  {pokemonData.hasOwnProperty("abilities")
+                  {pokemonData.hasOwnProperty('abilities')
                     ? pokemonData.abilities.map((data, i) => (
                         <div key={i}>{data.ability.name}</div>
                       ))
-                    : ""}
+                    : ''}
                 </ListAbilities>
               </Abilities>
               <Moves>
                 <PowerPokemonTitle>Moves</PowerPokemonTitle>
                 <ListMoves>
-                  {pokemonData.hasOwnProperty("moves")
+                  {pokemonData.hasOwnProperty('moves')
                     ? pokemonData.moves.map((data, i) => (
                         <div key={i}>{data.move.name}</div>
                       ))
-                    : ""}
+                    : ''}
                 </ListMoves>
               </Moves>
             </PowerPokemon>

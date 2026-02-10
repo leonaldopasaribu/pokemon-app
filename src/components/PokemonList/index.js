@@ -1,13 +1,13 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { Container, Pokemons } from "./styles";
+import { Container, Pokemons } from './styles';
 
-import CardPokemon from "../Global/Card";
+import CardPokemon from '../Global/Card';
 
 const PokemonList = ({ type }) => {
-  const pokemon = useSelector((state) => state.pokemon);
-  const pokemons = pokemon.data.hasOwnProperty("pokemons")
+  const pokemon = useSelector(state => state.pokemon);
+  const pokemons = pokemon.data.hasOwnProperty('pokemons')
     ? pokemon.data.pokemons.results
     : {};
   const myPokemons = pokemon.myPokemon.length > 0 ? pokemon.myPokemon : [];
@@ -15,12 +15,12 @@ const PokemonList = ({ type }) => {
   return (
     <Container>
       <Pokemons>
-        {type === "pokemons"
+        {type === 'pokemons'
           ? Array.isArray(pokemons) &&
             pokemons.map((data, i) => <CardPokemon key={i} data={data} />)
           : Array.isArray(myPokemons) &&
             myPokemons.map((data, i) => (
-              <CardPokemon type={"my-pokemon"} key={i} data={data} />
+              <CardPokemon type={'my-pokemon'} key={i} data={data} />
             ))}
       </Pokemons>
     </Container>
