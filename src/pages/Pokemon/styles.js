@@ -32,9 +32,17 @@ export const Description = styled.p`
   }
 `;
 
-export const Pagination = styled.div({
-  marginTop: '30px',
-  display: 'flex',
-  justifyContent: 'center',
-  gap: '20px',
-});
+export const LoadingContainer = styled.div`
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  
+  p {
+    font-family: Mulish;
+    font-size: 18px;
+    font-weight: 600;
+    color: #14fc33;
+  }
+`;

@@ -44,7 +44,7 @@ const CardPokemon = ({ data, type }) => {
         </Card>
       ) : (
         <NavLink to={`/pokemon-detail/${data.name}`}>
-          <Card background={color.lightVibrant}>
+          <Card background={color.lightVibrant} data-pokemon-card>
             <CardNumber>
               <p>#{idFormatter(data.id)}</p>
             </CardNumber>
