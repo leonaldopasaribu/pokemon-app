@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client/react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../../components/Header";
@@ -25,8 +25,11 @@ export default function Dashboard() {
   const count = pokemon.data.count;
 
   useEffect(() => {
-    if (loading) return "Loading...";
-    if (error) return `Error! ${error.message}`;
+    if (loading) return;
+    if (error) {
+      console.error(`Error! ${error.message}`);
+      return;
+    }
 
     if (data) {
       dispatch(getPokemons(data));

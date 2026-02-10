@@ -1,8 +1,8 @@
 import { applyMiddleware, createStore } from "redux";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import thunkMiddleware from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { thunk } from "redux-thunk";
+import { composeWithDevTools } from "@redux-devtools/extension";
 
 import rootReducer from "./reducers";
 
@@ -13,7 +13,7 @@ const persistConfig = {
 };
 
 export default function configureStore() {
-  const middlewares = [thunkMiddleware];
+  const middlewares = [thunk];
   const middlewareEnhancer = applyMiddleware(...middlewares);
 
   const enhancers = [middlewareEnhancer];
