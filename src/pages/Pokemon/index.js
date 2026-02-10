@@ -24,7 +24,7 @@ export default function Dashboard() {
   const observerRef = useRef();
   const isInitialLoad = useRef(true);
 
-  const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS, {
+  const { loading, error, data } = useQuery(GET_POKEMONS, {
     variables: { limit: limit, offset: offset },
     notifyOnNetworkStatusChange: true,
   });
