@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/leonaldopasaribu/pokemon-app/compare/v1.0.1...v1.1.0) (2026-02-10)
+
+
+### Features
+
+* implement infinite scroll on pokemon page ([ab2c065](https://github.com/leonaldopasaribu/pokemon-app/commit/ab2c0651f203049796f6b7d97274f6f891e8e70b))
+
 ### [1.0.1](https://github.com/leonaldopasaribu/pokemon-app/compare/v1.0.0...v1.0.1) (2026-02-10)
 
 ## [1.0.0](https://github.com/leonaldopasaribu/pokemon-app/compare/v0.1.2...v1.0.0) (2026-02-10)
